@@ -12,8 +12,19 @@ const {
 
 async function expressLoader(app) {
     app.use(morgan('dev'));
+    const allowedOrigins = [
+        'http://localhost:5173',
+        'https://texol-client.vercel.app'
+    ];
+
     app.use(cors({
-        origin: process.env.FRONT_END_URL,
+        origin: function (origin, callback) {
+            if (!origin || allowedOrigins.includes(origin)) {
+                callback(null, true);
+            } else {
+                callback(new Error('Not allowed by CORS'));
+            }
+        },
         credentials: true
     }));
     app.use(express.json());

@@ -18,13 +18,16 @@ exports.loginUser = async (req, res, next) => {
 
         return res.cookie('refresh_token', result.refresh_token, {
             httpOnly: true,
-            maxAge: 7 * 24 * 60 * 60 * 1000,
+            secure: true,
+            sameSite: 'None',
+            maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
             path: '/'
         }).status(201).json({
-            message: "user logged in succsessfully",
+            message: "user logged in successfully",
             success: true,
             access_token: result.access_token
-        })
+        });
+
 
     } catch (error) {
         next(error);
