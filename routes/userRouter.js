@@ -14,4 +14,9 @@ router
     .post(verifyToken, userController.addFeedback)
     .all(fourOhFiveHandler);
 
+router
+    .route('/result-history')
+    .post(verifyToken, userController.saveHistory)
+    .all(fourOhFiveHandler);
+
 module.exports = router;

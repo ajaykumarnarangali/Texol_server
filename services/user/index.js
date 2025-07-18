@@ -1,9 +1,11 @@
 const { getUser } = require('./getUser');
 const { addFeedback } = require('./addFeedback');
+const { saveHistory } = require('./saveHistory');
 
 const userService = {
     getUser,
-    addFeedback
+    addFeedback,
+    saveHistory
 }
 
 module.exports = userService

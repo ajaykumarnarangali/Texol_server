@@ -18,7 +18,8 @@ exports.loginUser = async (req, res, next) => {
 
         return res.cookie('refresh_token', result.refresh_token, {
             httpOnly: true,
-            maxAge: 7 * 24 * 60 * 60 * 1000
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+            path: '/'
         }).status(201).json({
             message: "user logged in succsessfully",
             success: true,

@@ -13,8 +13,8 @@ const {
 async function expressLoader(app) {
     app.use(morgan('dev'));
     app.use(cors({
-        origin: 'http://localhost:5173', 
-        credentials: true   
+        origin: process.env.FRONT_END_URL,
+        credentials: true
     }));
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
