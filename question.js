@@ -620,6 +620,7 @@ const questionModel = new mongoose.model('Questions', questionSchema);
 async function addQuestions() {
     try {
         await mongoose.connect(process.env.MONGO_URL);
+        console.log('Connected to DB:', mongoose.connection.name);
         await questionModel.insertMany(questions);
         console.log('Questions inserted successfully!');
         await mongoose.disconnect();

@@ -7,7 +7,7 @@ exports.loginUser = async ({ phone, password, countryCode }) => {
 
     const user = await User.findOne({ phone: `${countryCode} ${phone}` });
     if (!user) {
-        throw new APIError(403, 'invalid email')
+        throw new APIError(403, 'invalid phone number')
     }
 
     const isPasswordMatch = await bcrypt.compare(password, user.password);
